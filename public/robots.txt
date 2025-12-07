@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://udaan-ggv.vercel.app/sitemap.xml
