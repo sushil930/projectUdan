@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Menu, X, ChevronRight, Facebook, Instagram, Twitter, Mail, ArrowUp } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollToTop />
+      <SpeedInsights />
       <div className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50 selection:bg-rose-200">
         <Navbar />
         <main className="flex-grow pt-20">
