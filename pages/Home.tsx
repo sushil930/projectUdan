@@ -74,9 +74,9 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="font-serif text-xl md:text-3xl italic text-gray-500 mt-6 font-medium"
+                className="font-serif text-lg md:text-xl text-gray-600 mt-8 font-medium max-w-3xl mx-auto leading-relaxed px-4"
             >
-                The Official Creative Magazine of GGV
+                UDAAN is the official creative magazine of Guru Ghasidas Vishwavidyalaya, showcasing art, literature, photography, and student voices since 2010. It is a platform built to celebrate imagination, culture, and the evolving creative spirit of the university.
             </motion.p>
             
             {/* Decorative Stamps */}
