@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Camera, PenTool, Star, Sparkles, MoveRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { MAGAZINES, FEATURED_ARTICLES } from '../constants';
+import { MAGAZINES, FEATURED_ARTICLES, TESTIMONIALS } from '../constants';
 
 const Marquee = () => (
   <div className="bg-primary text-white border-y border-gray-900 py-3 overflow-hidden whitespace-nowrap relative z-10">
@@ -17,22 +17,22 @@ const Marquee = () => (
 );
 
 const SectionLink: React.FC<{ to: string; title: string; desc: string; icon: React.ElementType; index: string }> = ({ to, title, desc, icon: Icon, index }) => (
-  <Link to={to} className="group relative block p-10 border-b md:border-b-0 md:border-r border-gray-900 last:border-r-0 hover:bg-white transition-all overflow-hidden h-full flex flex-col justify-between bg-white/50">
-     <div className="absolute top-0 right-0 p-4 font-mono text-xs text-gray-400 font-bold border-l border-b border-gray-100 group-hover:bg-primary group-hover:text-white transition-colors">
+  <Link to={to} className="group relative block p-10 border-b md:border-b-0 md:border-r border-gray-900 last:border-r-0 transition-all overflow-hidden h-full flex flex-col justify-between bg-white/50">
+     <div className="absolute top-0 right-0 p-4 font-mono text-xs text-gray-400 font-bold border-l border-b border-gray-100 transition-colors">
         {index}
      </div>
      
      <div className="mt-4 mb-12">
-        <div className="w-16 h-16 border-2 border-gray-900 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
+        <div className="w-16 h-16 border-2 border-gray-900 rounded-full flex items-center justify-center mb-6 transition-all duration-300">
             <Icon size={28} />
         </div>
-        <h3 className="text-4xl font-serif font-bold text-gray-900 mb-4 leading-tight group-hover:underline decoration-2 underline-offset-4">{title}</h3>
+        <h3 className="text-4xl font-serif font-bold text-gray-900 mb-4 leading-tight decoration-2 underline-offset-4">{title}</h3>
         <p className="text-gray-600 font-medium text-lg leading-relaxed">{desc}</p>
      </div>
      
-     <div className="flex items-center justify-between border-t border-gray-200 pt-6 group-hover:border-gray-900 transition-colors">
-        <span className="font-mono text-xs uppercase tracking-widest text-gray-500 group-hover:text-gray-900">Discover</span>
-        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white transition-all">
+     <div className="flex items-center justify-between border-t border-gray-200 pt-6 transition-colors">
+        <span className="font-mono text-xs uppercase tracking-widest text-gray-500">Discover</span>
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 transition-all">
             <MoveRight size={18} />
         </div>
      </div>
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
   const latestIssue = MAGAZINES[0];
 
   return (
-    <div className="w-full bg-texture min-h-screen text-gray-900 pt-20">
+    <div className="w-full bg-texture min-h-screen text-gray-900">
       
       {/* 1. Retro Masthead */}
       <header className="border-b border-gray-900 bg-texture relative z-10">
@@ -98,12 +98,12 @@ const Home: React.FC = () => {
       {/* 2. Hero Split Layout */}
       <section className="grid lg:grid-cols-12 border-b border-gray-900 bg-white">
         {/* Left: Editorial Text */}
-        <div className="lg:col-span-7 p-8 md:p-20 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-900 flex flex-col justify-center relative bg-texture">
+        <div className="lg:col-span-7 p-6 md:p-20 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-900 flex flex-col justify-center relative bg-texture">
              <div className="absolute top-0 left-0 bg-primary text-white px-4 py-1 text-xs font-bold uppercase tracking-widest border-b border-r border-gray-900 z-20">
                 Featured Story
              </div>
 
-             <h2 className="text-6xl md:text-8xl font-serif font-black leading-[0.9] mb-10 text-gray-900 relative z-10">
+             <h2 className="text-4xl sm:text-5xl md:text-8xl font-serif font-black leading-[0.9] mb-8 md:mb-10 text-gray-900 relative z-10 break-words">
                 THE <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">RENAISSANCE</span> <br/>
                 ISSUE.
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
 
              <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
                  <div className="flex-1">
-                    <p className="text-xl text-gray-800 leading-relaxed font-serif drop-cap text-justify">
+                    <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-serif drop-cap text-justify">
                         Welcome to the 5th volume of UDAAN. In this issue, we explore the boundaries of student imagination, featuring over 50 artists and writers from Guru Ghasidas Vishwavidyalaya. It is a collection of stories that define our generation.
                     </p>
                  </div>
@@ -273,7 +273,46 @@ const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* 7. Footer Lead-in / Manifesto */}
+      {/* 7. Testimonials */}
+      <section className="py-20 border-b border-gray-900 bg-texture">
+        <div className="container mx-auto px-6 max-w-7xl">
+            <div className="flex items-center justify-center mb-16">
+                <div className="text-center">
+                    <h2 className="text-4xl md:text-5xl font-serif font-black text-gray-900 mb-4">Voices of UDAAN</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+                {TESTIMONIALS.map((testimonial, idx) => (
+                    <motion.div 
+                        key={testimonial.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="bg-white p-8 border-2 border-gray-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 flex flex-col"
+                    >
+                        <div className="mb-6 text-primary">
+                            <Sparkles size={32} />
+                        </div>
+                        <p className="font-serif text-lg leading-relaxed text-gray-800 mb-8 flex-grow italic">
+                            "{testimonial.text}"
+                        </p>
+                        <div className="border-t border-gray-200 pt-4 flex items-center gap-4">
+                            <img src={testimonial.image} alt={testimonial.author} className="w-12 h-12 rounded-full object-cover border border-gray-900" />
+                            <div>
+                                <h4 className="font-bold text-gray-900 uppercase tracking-wider text-sm">{testimonial.author}</h4>
+                                <p className="font-mono text-xs text-gray-500 mt-1">{testimonial.role}</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* 8. Footer Lead-in / Manifesto */}
       <section className="py-32 bg-gray-900 text-[#FDFBF7] text-center px-6 border-b border-gray-900 relative overflow-hidden">
          {/* Background noise for footer */}
          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'1\'/%3E%3C/svg%3E")' }}></div>

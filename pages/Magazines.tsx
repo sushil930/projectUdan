@@ -9,7 +9,7 @@ const Magazines: React.FC = () => {
   const pastIssues = MAGAZINES.slice(1);
 
   return (
-    <div className="w-full min-h-screen text-gray-900 pt-20 bg-texture">
+    <div className="w-full min-h-screen text-gray-900 bg-texture">
       
       {/* 1. Archive Masthead */}
       <header className="bg-texture border-b border-gray-900 py-16 md:py-24 text-center relative overflow-hidden">

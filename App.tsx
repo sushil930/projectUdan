@@ -16,6 +16,7 @@ import NotFound from './pages/NotFound';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -48,6 +49,7 @@ const App: React.FC = () => {
           </AnimatePresence>
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </HashRouter>
   );

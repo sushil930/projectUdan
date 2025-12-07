@@ -16,7 +16,7 @@ const Marquee = () => (
 
 const Contact: React.FC = () => {
   return (
-    <div className="w-full min-h-screen text-gray-900 pt-20 bg-texture">
+    <div className="w-full min-h-screen text-gray-900 bg-texture">
       
       {/* 1. Masthead */}
       <header className="border-b border-gray-900 bg-texture relative overflow-hidden">

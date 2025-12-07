@@ -122,3 +122,27 @@ export const FEATURED_ARTICLES: Article[] = [
     imageUrl: 'https://picsum.photos/seed/poetry/800/600'
   }
 ];
+
+export const TESTIMONIALS = [
+  {
+    id: 't1',
+    text: "UDAAN gave me the platform to showcase my art to the entire university. It's more than just a magazine; it's a community.",
+    author: "Priya Sharma",
+    role: "B.Tech CSE, 3rd Year",
+    image: "https://picsum.photos/seed/t1/100/100"
+  },
+  {
+    id: 't2',
+    text: "Being part of the editorial team was the highlight of my college life. The creative freedom we get is unmatched.",
+    author: "Rahul Verma",
+    role: "MA English, Final Year",
+    image: "https://picsum.photos/seed/t2/100/100"
+  },
+  {
+    id: 't3',
+    text: "The quality of content and design in UDAAN rivals professional publications. Proud to see our university producing this.",
+    author: "Dr. S.K. Mishra",
+    role: "Faculty, Arts Dept.",
+    image: "https://picsum.photos/seed/t3/100/100"
+  }
+];

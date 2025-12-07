@@ -20,7 +20,7 @@ const Gallery: React.FC = () => {
     : GALLERY_ITEMS.filter(item => item.category === filter);
 
   return (
-    <div className="min-h-screen bg-texture pt-20">
+    <div className="min-h-screen bg-texture">
       
       {/* 1. Retro Masthead */}
       <header className="bg-texture border-b border-gray-900 py-16 md:py-24 text-center relative overflow-hidden">
