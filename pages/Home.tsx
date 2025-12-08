@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Camera, PenTool, Star, Sparkles, MoveRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { MAGAZINES, FEATURED_ARTICLES, TESTIMONIALS } from '../constants';
+import { MAGAZINES, FEATURED_ARTICLES, TESTIMONIALS, PATRONS } from '../constants';
 
 const Marquee = () => (
   <div className="bg-primary text-white border-y border-gray-900 py-3 overflow-hidden whitespace-nowrap relative z-10">
@@ -273,8 +273,40 @@ const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* 7. Testimonials */}
+      {/* 7. Patrons */}
       <section className="py-20 border-b border-gray-900 bg-texture">
+        <div className="container mx-auto px-6 max-w-7xl">
+            <div className="flex items-center justify-center mb-16">
+                <div className="text-center">
+                    <h2 className="text-4xl md:text-5xl font-serif font-black text-gray-900 mb-4">Our Patrons</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-12">
+                {PATRONS.map((patron, idx) => (
+                    <motion.div 
+                        key={patron.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex flex-col items-center text-center"
+                    >
+                        <div className="w-48 h-56 border-2 border-gray-900 p-2 mb-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1 hover:rotate-0 transition-transform duration-300">
+                            <img src={patron.image} alt={patron.name} className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" />
+                        </div>
+                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-2">{patron.name}</h3>
+                        <p className="font-mono text-xs text-primary font-bold uppercase tracking-widest mb-4">{patron.role}</p>
+                        <p className="text-gray-600 italic font-serif max-w-xs">"{patron.message}"</p>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* 8. Testimonials */}
+      <section className="py-20 border-b border-gray-900 bg-white">
         <div className="container mx-auto px-6 max-w-7xl">
             <div className="flex items-center justify-center mb-16">
                 <div className="text-center">
@@ -312,7 +344,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Footer Lead-in / Manifesto */}
+      {/* 9. Footer Lead-in / Manifesto */}
       <section className="py-32 bg-gray-900 text-[#FDFBF7] text-center px-6 border-b border-gray-900 relative overflow-hidden">
          {/* Background noise for footer */}
          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'1\'/%3E%3C/svg%3E")' }}></div>
