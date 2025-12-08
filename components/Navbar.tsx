@@ -28,13 +28,8 @@ const Navbar: React.FC = () => {
     >
       <div className="w-full flex items-center justify-between h-full pl-6 pr-6 lg:pr-0">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="bg-gray-900 text-white p-2 border border-gray-900 group-hover:bg-primary group-hover:border-primary transition-colors">
-            <Feather size={20} />
-          </div>
-          <span className="font-serif text-2xl font-black tracking-tight text-gray-900 uppercase">
-            UDAAN
-          </span>
+        <Link to="/" className="flex items-center gap-3 group pl-2">
+          <img src="/icons/udaan-logo.svg" alt="UDAAN Logo" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Menu */}

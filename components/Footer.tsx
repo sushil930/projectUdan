@@ -15,12 +15,7 @@ const Footer: React.FC = () => {
 
              <div>
                 <Link to="/" className="flex items-center gap-3 mb-6 group w-fit relative z-10">
-                  <div className="bg-gray-900 text-white p-2 border border-gray-900 group-hover:bg-primary group-hover:border-primary transition-colors">
-                    <Feather size={24} />
-                  </div>
-                  <span className="font-serif text-3xl font-black tracking-tight uppercase">
-                    UDAAN
-                  </span>
+                  <img src="/icons/udaan-logo.svg" alt="UDAAN Logo" className="h-16 w-auto object-contain" />
                 </Link>
                 <p className="font-serif text-xl leading-relaxed max-w-md relative z-10">
                     The official creative club & annual student magazine of Guru Ghasidas Vishwavidyalaya. Fostering art, literature, and culture since 2018.

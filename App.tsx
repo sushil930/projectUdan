@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Loader from './components/Loader';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -32,6 +33,7 @@ const ScrollToTop = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
+      <Loader />
       <ScrollToTop />
       <SpeedInsights />
       <div className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50 selection:bg-rose-200">
