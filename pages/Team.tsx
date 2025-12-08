@@ -15,44 +15,49 @@ const Marquee = () => (
   </div>
 );
 
-const MemberCard: React.FC<{ member: { name: string; image: string }; category: string }> = ({ member, category }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="group relative flex flex-col h-full bg-white border-b border-r border-gray-900"
-  >
-    {/* Image Frame */}
-    <div className="relative aspect-[3/4] overflow-hidden border-b border-gray-900 bg-gray-200">
-        <div className="absolute inset-0 bg-primary/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-        <img 
-            src={member.image} 
-            alt={member.name} 
-            className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500" 
-        />
-        
-        {/* Social Links Overlay */}
-        <div className="absolute bottom-0 left-0 w-full p-4 flex justify-center gap-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/90 backdrop-blur-sm border-t border-gray-900 z-20">
-            <button className="text-gray-900 hover:text-primary transition-colors"><Mail size={18} /></button>
-            <button className="text-gray-900 hover:text-blue-600 transition-colors"><Linkedin size={18} /></button>
-        </div>
-    </div>
+const MemberCard: React.FC<{ member: { name: string; image: string }; category: string }> = ({ member, category }) => {
+  const [isClicked, setIsClicked] = React.useState(false);
 
-    {/* Info */}
-    <div className="p-6 flex-grow flex flex-col justify-between bg-texture">
-        <div>
-            <div className="mb-2">
-                <span className="inline-block border border-gray-900 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-white">
-                    {category}
-                </span>
-            </div>
-            <h3 className="font-serif font-bold text-xl text-gray-900 mb-1 leading-tight group-hover:text-primary transition-colors">
-                {member.name}
-            </h3>
-        </div>
-    </div>
-  </motion.div>
-);
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative flex flex-col h-full bg-white border-b border-r border-gray-900 cursor-pointer"
+      onClick={() => setIsClicked(!isClicked)}
+    >
+      {/* Image Frame */}
+      <div className="relative aspect-[3/4] overflow-hidden border-b border-gray-900 bg-gray-200">
+          <div className={`absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity z-10 ${isClicked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+          <img 
+              src={member.image} 
+              alt={member.name} 
+              className={`w-full h-full object-cover filter contrast-125 transition-all duration-500 ${isClicked ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`} 
+          />
+          
+          {/* Social Links Overlay */}
+          <div className={`absolute bottom-0 left-0 w-full p-4 flex justify-center gap-4 transition-transform duration-300 bg-white/90 backdrop-blur-sm border-t border-gray-900 z-20 ${isClicked ? 'translate-y-0' : 'translate-y-full group-hover:translate-y-0'}`}>
+              <button className="text-gray-900 hover:text-primary transition-colors"><Mail size={18} /></button>
+              <button className="text-gray-900 hover:text-blue-600 transition-colors"><Linkedin size={18} /></button>
+          </div>
+      </div>
+
+      {/* Info */}
+      <div className="p-6 flex-grow flex flex-col justify-between bg-texture">
+          <div>
+              <div className="mb-2">
+                  <span className="inline-block border border-gray-900 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-white">
+                      {category}
+                  </span>
+              </div>
+              <h3 className={`font-serif font-bold text-xl mb-1 leading-tight transition-colors ${isClicked ? 'text-primary' : 'text-gray-900 group-hover:text-primary'}`}>
+                  {member.name}
+              </h3>
+          </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const SectionHeader: React.FC<{ title: string; icon: React.ElementType }> = ({ title, icon: Icon }) => (
     <div className="flex items-center gap-4 py-8 px-6 border-b border-gray-900 bg-white sticky top-20 z-30 shadow-sm">

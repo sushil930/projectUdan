@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Camera, PenTool, Star, Sparkles, MoveRight } from 'lucide-react';
+import { ArrowRight, BookOpen, Camera, PenTool, Star, Sparkles, MoveRight, Mail, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { MAGAZINES, FEATURED_ARTICLES, TESTIMONIALS, PATRONS } from '../constants';
 
@@ -15,6 +15,39 @@ const Marquee = () => (
     </div>
   </div>
 );
+
+const PatronCard: React.FC<{ patron: typeof PATRONS[0]; index: number }> = ({ patron, index }) => {
+  const [isClicked, setIsClicked] = React.useState(false);
+
+  return (
+    <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className="flex flex-col items-center text-center group cursor-pointer"
+        onClick={() => setIsClicked(!isClicked)}
+    >
+        <div className="relative w-48 h-56 border-2 border-gray-900 p-2 mb-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1 hover:rotate-0 transition-transform duration-300 overflow-hidden">
+            <img 
+                src={patron.image} 
+                alt={patron.name} 
+                className={`w-full h-full object-cover filter transition-all duration-500 ${isClicked ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`} 
+            />
+             {/* Social Links Overlay */}
+            <div className={`absolute bottom-0 left-0 w-full p-2 flex justify-center gap-4 transition-transform duration-300 bg-white/90 backdrop-blur-sm border-t border-gray-900 z-20 ${isClicked ? 'translate-y-0' : 'translate-y-full group-hover:translate-y-0'}`}>
+                <button className="text-gray-900 hover:text-primary transition-colors"><Mail size={16} /></button>
+                <button className="text-gray-900 hover:text-blue-600 transition-colors"><Linkedin size={16} /></button>
+            </div>
+        </div>
+        <h3 className={`text-2xl font-serif font-bold mb-2 transition-colors ${isClicked ? 'text-primary' : 'text-gray-900 group-hover:text-primary'}`}>
+            {patron.name}
+        </h3>
+        <p className="font-mono text-xs text-primary font-bold uppercase tracking-widest mb-4">{patron.role}</p>
+        <p className="text-gray-600 italic font-serif max-w-xs">"{patron.message}"</p>
+    </motion.div>
+  );
+};
 
 const SectionLink: React.FC<{ to: string; title: string; desc: string; icon: React.ElementType; index: string }> = ({ to, title, desc, icon: Icon, index }) => (
   <Link to={to} className="group relative block p-10 border-b md:border-b-0 md:border-r border-gray-900 last:border-r-0 transition-all overflow-hidden h-full flex flex-col justify-between bg-white/50">
@@ -285,21 +318,7 @@ const Home: React.FC = () => {
 
             <div className="grid md:grid-cols-3 gap-12">
                 {PATRONS.map((patron, idx) => (
-                    <motion.div 
-                        key={patron.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="flex flex-col items-center text-center"
-                    >
-                        <div className="w-48 h-56 border-2 border-gray-900 p-2 mb-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1 hover:rotate-0 transition-transform duration-300">
-                            <img src={patron.image} alt={patron.name} className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-2">{patron.name}</h3>
-                        <p className="font-mono text-xs text-primary font-bold uppercase tracking-widest mb-4">{patron.role}</p>
-                        <p className="text-gray-600 italic font-serif max-w-xs">"{patron.message}"</p>
-                    </motion.div>
+                    <PatronCard key={patron.id} patron={patron} index={idx} />
                 ))}
             </div>
         </div>
