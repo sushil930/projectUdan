@@ -131,12 +131,12 @@ const Home: React.FC = () => {
       {/* 2. Hero Split Layout */}
       <section className="grid lg:grid-cols-12 border-b border-gray-900 bg-white">
         {/* Left: Editorial Text */}
-        <div className="lg:col-span-7 p-6 md:p-20 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-900 flex flex-col justify-center relative bg-texture">
+        <div className="lg:col-span-7 px-6 pt-24 pb-12 md:p-20 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-900 flex flex-col justify-center relative bg-texture">
              <div className="absolute top-0 left-0 bg-primary text-white px-4 py-1 text-xs font-bold uppercase tracking-widest border-b border-r border-gray-900 z-20">
                 Featured Story
              </div>
 
-             <h2 className="text-4xl sm:text-5xl md:text-8xl font-serif font-black leading-[0.9] mb-8 md:mb-10 text-gray-900 relative z-10 break-words">
+             <h2 className="text-4xl sm:text-5xl md:text-8xl font-serif font-black leading-[0.9] mb-10 md:mb-10 text-gray-900 relative z-10 break-words">
                 THE <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">RENAISSANCE</span> <br/>
                 ISSUE.
