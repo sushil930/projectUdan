@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Camera, PenTool, Star, Sparkles, MoveRight, Mail, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { MAGAZINES, FEATURED_ARTICLES, TESTIMONIALS, PATRONS } from '../constants';
+import { getOptimizedImageUrl } from '../utils/imageOptimizer';
 
 const Marquee = () => (
   <div className="bg-primary text-white border-y border-gray-900 py-3 overflow-hidden whitespace-nowrap relative z-10">
@@ -30,7 +31,7 @@ const PatronCard: React.FC<{ patron: typeof PATRONS[0]; index: number }> = ({ pa
     >
         <div className="relative w-48 h-56 border-2 border-gray-900 p-2 mb-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1 hover:rotate-0 transition-transform duration-300 overflow-hidden">
             <img 
-                src={patron.image} 
+                src={getOptimizedImageUrl(patron.image, 300)} 
                 alt={patron.name} 
                 className={`w-full h-full object-cover filter transition-all duration-500 ${isClicked ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`} 
             />
@@ -171,7 +172,7 @@ const Home: React.FC = () => {
                 <div className="relative border-4 border-gray-900 bg-white p-2 shadow-[16px_16px_0px_0px_rgba(17,24,39,1)] transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[20px_20px_0px_0px_rgba(29,78,216,1)]">
                     <div className="relative overflow-hidden border border-gray-200">
                          <img 
-                            src={latestIssue.coverImage} 
+                            src={getOptimizedImageUrl(latestIssue.coverImage, 600)} 
                             alt="Latest Issue" 
                             className="w-[340px] h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                         />
@@ -210,7 +211,7 @@ const Home: React.FC = () => {
                         className="group flex flex-col items-start h-full"
                     >
                         <div className="w-full aspect-[4/3] overflow-hidden border-2 border-gray-900 mb-6 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[4px_4px_0px_0px_rgba(29,78,216,1)] group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-300">
-                            <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                            <img src={getOptimizedImageUrl(article.imageUrl, 400)} alt={article.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                             <div className="absolute top-0 left-0 bg-white text-gray-900 px-3 py-1 text-xs font-bold uppercase border-r-2 border-b-2 border-gray-900 z-10">
                                 {article.category}
                             </div>
@@ -289,7 +290,7 @@ const Home: React.FC = () => {
                         <Link key={mag.id} to={`/magazines/${mag.id}`} className="group relative w-64 flex-shrink-0 perspective-1000">
                             {/* Spine/Cover */}
                             <div className="aspect-[3/4] bg-gray-200 relative shadow-xl transition-transform duration-500 group-hover:-translate-y-4 group-hover:rotate-1">
-                                <img src={mag.coverImage} alt={mag.title} className="w-full h-full object-cover filter sepia-[0.3] contrast-125 group-hover:sepia-0 transition-all" />
+                                <img src={getOptimizedImageUrl(mag.coverImage, 300)} alt={mag.title} className="w-full h-full object-cover filter sepia-[0.3] contrast-125 group-hover:sepia-0 transition-all" />
                                 {/* Overlay Shadow for depth */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent pointer-events-none mix-blend-multiply"></div>
                             </div>
@@ -351,7 +352,7 @@ const Home: React.FC = () => {
                             "{testimonial.text}"
                         </p>
                         <div className="border-t border-gray-200 pt-4 flex items-center gap-4">
-                            <img src={testimonial.image} alt={testimonial.author} className="w-12 h-12 rounded-full object-cover border border-gray-900" />
+                            <img src={getOptimizedImageUrl(testimonial.image, 100)} alt={testimonial.author} className="w-12 h-12 rounded-full object-cover border border-gray-900" />
                             <div>
                                 <h4 className="font-bold text-gray-900 uppercase tracking-wider text-sm">{testimonial.author}</h4>
                                 <p className="font-mono text-xs text-gray-500 mt-1">{testimonial.role}</p>

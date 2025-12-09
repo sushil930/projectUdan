@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Crown, PenTool, Palette, Users, Star, Linkedin, Mail, Twitter, Camera, Monitor, Megaphone, BookOpen } from 'lucide-react';
 import { ALL_TEAMS } from '../constants';
+import { getOptimizedImageUrl } from '../utils/imageOptimizer';
 
 const Marquee = () => (
   <div className="bg-primary text-white border-y border-gray-900 py-3 overflow-hidden whitespace-nowrap relative z-10">
@@ -30,7 +31,7 @@ const MemberCard: React.FC<{ member: { name: string; image: string }; category: 
       <div className="relative aspect-[3/4] overflow-hidden border-b border-gray-900 bg-gray-200">
           <div className={`absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity z-10 ${isClicked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
           <img 
-              src={member.image} 
+              src={getOptimizedImageUrl(member.image, 400)} 
               alt={member.name} 
               className={`w-full h-full object-cover filter contrast-125 transition-all duration-500 ${isClicked ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`} 
           />
