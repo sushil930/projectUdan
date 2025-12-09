@@ -14,13 +14,25 @@ const PRODUCTION_URL = 'https://project-udan.vercel.app';
 export const getOptimizedImageUrl = (url: string, width?: number) => {
   if (!url) return '';
 
-  // 1. If it's already a Cloudinary URL, return as is (or add params if needed)
-  if (url.includes('res.cloudinary.com')) return url;
+  // 1. If it's already a Cloudinary URL, inject AVIF + quality + optional width
+  if (url.includes('res.cloudinary.com')) {
+    const hasUpload = url.includes('/image/upload/');
+    const alreadyOptimized = url.includes('f_avif') || url.includes('f_auto');
+
+    if (!hasUpload || alreadyOptimized) {
+      return url;
+    }
+
+    let transformation = 'f_avif,q_auto';
+    if (width) transformation += `,w_${width}`;
+
+    return url.replace('/image/upload/', `/image/upload/${transformation}/`);
+  }
 
   // 2. Construct the transformation string
-  // f_auto: Automatic format selection (AVIF, WebP, etc.)
+  // f_avif: Force AVIF output when supported
   // q_auto: Automatic quality optimization
-  let transformations = 'f_auto,q_auto';
+  let transformations = 'f_avif,q_auto';
   if (width) {
     transformations += `,w_${width}`;
   }
